@@ -1,0 +1,21 @@
+import org.bouncycastle.crypto.digests.SHA256Digest;
+
+public class Exercise {
+
+	public static void main(String[] args) {
+		 byte[] sha256(byte[] data) {
+		        //Create a sha 256 of the message
+		        SHA256Digest dgst = new SHA256Digest();
+		        dgst.reset();
+		        dgst.update(data, 0, data.length);
+		        int digestSize = dgst.getDigestSize();
+		        byte[] hash = new byte[digestSize];
+		        dgst.doFinal(hash, 0);
+		        return hash;
+		    }
+
+		System.out.println("hash"+hash);// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,14 @@
+NFA //Type
+Example 1--Les Lander--(a + ab)*(\ + a)  //Title
+a b // input alphabet, note such comments are permitted at the end of the line
+q0 q1 q2 q3 // Machine states
+q0	// the initial state
+q0 q2 // final state
+q0  a  q1  // transitions: input state, input symbol, output state
+q0  a  q3
+q1  a  q3  
+q1  b  q2 
+q2  a  q1 
+q3  b  q2  
+end 	//required
+

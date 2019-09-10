@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="applet"/>
+	<classpathentry kind="src" path="examples/Ant/EX1/src"/>
+	<classpathentry kind="src" path="examples/Ant/EX2/src"/>
+	<classpathentry kind="src" path="examples/Ant/EX3/src"/>
+	<classpathentry kind="src" path="examples/Ant/EX4/src"/>
+	<classpathentry kind="src" path="examples/Java/EX1"/>
+	<classpathentry kind="src" path="examples/Java/EX2"/>
+	<classpathentry kind="src" path="examples/Java/EX3"/>
+	<classpathentry kind="src" path="tools/smc-anttask/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/statemap.jar"/>
+	<classpathentry kind="lib" path="lib/smc-ant.jar"/>
+	<classpathentry kind="output" path="tools/smc-anttask/build/classes"/>
+</classpath>

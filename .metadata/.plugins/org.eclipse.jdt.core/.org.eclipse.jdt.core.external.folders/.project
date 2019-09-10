@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link0</name>
+			<type>2</type>
+			<location>C:/Users/meng/Downloads/jpbc-2.0.0/jpbc-plaf/src/main/java/it/unisa/dia/gas/plaf/jpbc/pairing/parameters</location>
+		</link>
+	</linkedResources>
+</projectDescription>

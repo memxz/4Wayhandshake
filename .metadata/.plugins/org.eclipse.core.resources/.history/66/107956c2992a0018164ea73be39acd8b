@@ -1,0 +1,110 @@
+package jPBC;  
+  
+
+import it.unisa.dia.gas.jpbc.*;  
+import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;  
+import java.lang.reflect.Proxy;  
+import java.util.Calendar;  
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
+
+public class BasicIdent2 implements Ident {  
+
+  private Element Snonce, Anonce,PMK,AA,SA, P,Su, PTK1, PTK2;  
+  private Field G1, Zr;  
+  private Pairing pairing;  
+
+  public BasicIdent2() {  
+      init();  
+  }  
+
+  /** 
+  * 初始化 
+  */  
+  private void init() {  
+      pairing = PairingFactory.getPairing("a.properties");//  
+      PairingFactory.getInstance().setUsePBCWhenPossible(true);  
+      checkSymmetric(pairing);  
+      //将变量r初始化为Zr中的元素  
+      Zr = pairing.getZr();  
+      Snonce = Zr.newElement();  
+      //将变量Ppub，Qu，Su，V初始化为G1中的元素，G1是加法群  
+      G1 = pairing.getG1();  
+      AA = G1.newElement();  
+      PMK = G1.newElement();  
+      Su = G1.newElement();  
+      SA = G1.newElement();  
+      //将变量T1，T2V初始化为GT中的元素，GT是乘法群  
+      Field GT = pairing.getGT();  
+      PTK1 = GT.newElement();  
+      PTK2 = GT.newElement();  
+  }  
+
+  /** 
+   * 判断配对是否为对称配对，不对称则输出错误信息 
+   *  
+   * @param pairing 
+   */  
+  private void checkSymmetric(Pairing pairing) {  
+      if (!pairing.isSymmetric()) {  
+          throw new RuntimeException("密钥不对称!");  
+      }  
+  }  
+
+  @Override  
+  public void buildSystem() {  
+      System.out.println("-------------------系统建立阶段----------------------");  
+      Snonce = Zr.newRandomElement().getImmutable();// //随机生成主密钥s  
+      Anonce = Zr.newRandomElement().getImmutable();
+      P = G1.newRandomElement().getImmutable();// Produce element p for G1  
+      AA = P.mulZn(Snonce);// Compute Snonce x p  
+      System.out.println("P=" + P);  
+      System.out.println("Snonce=" + Snonce);  
+      System.out.println("AA=" + AA);  
+  }  
+
+  @Override  
+  public void extractSecretKey() {  
+      System.out.println("-------------------Pairwise Master Key Generate(PMK)----------------------");  
+      PMK = pairing.getG1().newElement().setFromHash("PMKdrived".getBytes(), 0, 9)  
+              .getImmutable();// //Generate PMK by hashing   
+      Su = PMK.mulZn(Snonce).getImmutable();  
+      System.out.println("PMK=" + PMK);  
+      System.out.println("Su=" + Su);  
+  }  
+
+  @Override  
+  public void encrypt() {  
+      System.out.println("-------------------加密阶段----------------------");  
+        
+      SA = P.mulZn(Anonce);  
+      PTK1 = pairing.pairing(AA, PMK).getImmutable();// 计算e（Ppub,Qu）  
+      PTK1 = PTK1.powZn(Anonce).getImmutable();  
+      System.out.println("Anonce=" + Anonce);  
+      System.out.println("SA=" + SA);  
+      System.out.println("PTK1=e（Ppub,Qu）^r=" + PTK1);  
+  }  
+
+  @Override  
+  public void decrypt() {  
+      System.out.println("-------------------解密阶段----------------------");  
+      PTK2 = pairing.pairing(SA, Su).getImmutable();  
+      System.out.println("PTK2=e(SA,Su)=" + PTK2);  
+      int byt = SA.getLengthInBytes();// 求V的字节长度，假设消息长度为128字节  
+      System.out.println("文本长度" + (byt + 128));  
+  }  
+
+  public static void main(String[] args) {  
+      BasicIdent2 ident = new BasicIdent2();  
+      // 动态代理，统计各个方法耗时  
+      Ident identProxy = (Ident) Proxy.newProxyInstance(  
+              BasicIdent2.class.getClassLoader(),  
+              new Class[] { Ident.class }, new TimeCountProxyHandle(ident));  
+
+      identProxy.buildSystem();  
+      identProxy.extractSecretKey();  
+      identProxy.encrypt();  
+      identProxy.decrypt();  
+  }  
+
+}  

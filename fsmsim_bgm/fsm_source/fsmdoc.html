@@ -1,0 +1,603 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.01 [en] (WinNT; I) [Netscape]">
+   <META NAME="Author" CONTENT="Eileen Head/ Les Lander">
+   <TITLE>FSM simulator</TITLE>
+</HEAD>
+<BODY>
+
+<CENTER>
+<H2>
+ANOTHER FINITE STATE MACHINE (FSM) SIMULATOR, IMPLEMENTED AS A JAVA<SUP><FONT SIZE=+0>TM</FONT></SUP>
+APPLICATION<BR>
+<FONT SIZE=+1>Version 1.2.1 (bug-fixes December 10, 1997)</FONT></H2></CENTER>
+<SUP>TM</SUP> Java is a registered trademark of Sun Microsystems
+<H4>
+<B>Contents:</B></H4>
+
+<UL>
+<LI>
+<A HREF="#jdk">Obtaining the Java interpreter</A></LI>
+
+<LI>
+<A HREF="#fsm">Obtaining the FSM simulator</A></LI>
+
+<LI>
+<A HREF="#env">Setting the environment</A></LI>
+
+<LI>
+<A HREF="#example">Obtaining the example files</A></LI>
+
+<LI>
+<A HREF="#graphical">Using the graphical version of the Simulator</A></LI>
+
+<UL>
+<LI>
+<A HREF="#notes">Notes</A></LI>
+
+<LI>
+<A HREF="#specialnote">Special note on NFA simulations</A></LI>
+</UL>
+
+<LI>
+<A HREF="#grader">The course-grader's quick-to-use version of the Simulator</A></LI>
+
+<LI>
+<A HREF="#shortform">The short-form of the text-only version of the Simulator</A></LI>
+
+<LI>
+<A HREF="#textonly">The full text-only version of the FSM simulator</A></LI>
+
+<LI>
+<A HREF="#format">Format of the FSM file</A></LI>
+
+<UL>
+<LI>
+<A HREF="#ex1">Example 1</A></LI>
+
+<LI>
+<A HREF="#ex2">Example 2</A></LI>
+</UL>
+</UL>
+
+<CENTER>
+<H3>
+
+<HR WIDTH="100%"></H3></CENTER>
+
+<CENTER>
+<H3>
+<A NAME="jdk"></A><B>Obtaining the Java interpreter</B></H3></CENTER>
+Down-load the Java Development Kit using a browser (lynx, Internet explorer,
+Netscape), go to the site http://www.javasoft.com and select "Java Development
+Kit." You need to download the JDK1.1.4 <I>or later</I> for your machine,
+probably Microsoft's Windows 95/NT but various UNIX platforms support Java.
+If you are running Windows 3.1, you must go to the IBM site and look there:
+http://www.alphaworks.ibm.com (this site does not work usefully with lynx).
+For Windows 3.1 you are looking for IBM’s ADK for Java 1. 1 or later
+
+<P>From home, be prepared for several hours download time (try overnight).
+
+<P>The file is a self-extracting executable. It should install into the
+directory C:\jdk1.1.4 (or later). Check the installation notes if you are
+using IBM’s ADK.
+
+<P>If you plan to develop programs in Java, download the "api documentation"
+and unzip it <B>using a 32-bit (long file name) "unzipper</B>." Unzip to
+C:\ with directory options on; in this way it unzips to C:\jdk1.1.4\docs
+(or later). Also download the Java tutorial when you can (Binghamton students
+should let me know if they cannot find the tutorial.zip file). The tutorial
+has to be unzipped into the directory it will use, e.g., C:\jdk1.1.4\tutorial.
+<BR>
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="fsm"></A><B>Obtaining the Finite State Machine simulator</B></H3></CENTER>
+<B><I>NO file</I></B> copying is necessary if you are working locally and
+using our server (bingsuns).
+
+<P>For your own PC, download the file <A HREF="http://www.cs.binghamton.edu/~lander/cs573/fsmsim_bgm.zip">fsmsim_bgm.zip</A>
+(Windows) or <A HREF="http://www.cs.binghamton.edu/~lander/cs573/fsmsim_bgm.tar">fsmsim_bgm.tar</A>
+and unzip from your root directory. These zip files include this document
+and the associated gif's. We recommend that you keep the files in the directories
+shown and add C:\classes your CLASSPATH variable, <I>despite</I> the current
+recommendation from Javasoft not to use a CLASSPATH. The files provided
+are:
+<BR>classes/FSM.class
+<BR>classes/fsm/control/MachineDescriptionFSM.class
+<BR>classes/fsm/control/MainFrame$1.class
+<BR>classes/fsm/control/MainFrame$2.class
+<BR>classes/fsm/control/MainFrame$3.class
+<BR>classes/fsm/control/MainFrame$4.class
+<BR>classes/fsm/control/MainFrame.class
+<BR>classes/fsm/display/CButton.class
+<BR>classes/fsm/display/Controller$1.class
+<BR>classes/fsm/display/Controller$2.class
+<BR>classes/fsm/display/Controller$3.class
+<BR>classes/fsm/display/Controller$4.class
+<BR>classes/fsm/display/Controller$5.class
+<BR>classes/fsm/display/Controller.class
+<BR>classes/fsm/display/GraphCanvas$CurrentStateColor.class
+<BR>classes/fsm/display/GraphCanvas$Edge.class
+<BR>classes/fsm/display/GraphCanvas$FinalNode.class
+<BR>classes/fsm/display/GraphCanvas$Node.class
+<BR>classes/fsm/display/GraphCanvas$StartFinalNode.class
+<BR>classes/fsm/display/GraphCanvas$StartNode.class
+<BR>classes/fsm/display/GraphCanvas.class
+<BR>classes/fsm/display/MachinePanel$1.class
+<BR>classes/fsm/display/MachinePanel$InputActionListener.class
+<BR>classes/fsm/display/MachinePanel.class
+<BR>classes/fsm/display/TapeDraw.class
+<BR>classes/fsm/display/TextDriver$InputData.class
+<BR>classes/fsm/display/TextDriver.class
+<BR>classes/fsm/display/Viewer.class
+<BR>classes/fsm/machine/dfa/DFAMachine.class
+<BR>classes/fsm/machine/dfa/Function$Enumerator.class
+<BR>classes/fsm/machine/dfa/Function.class
+<BR>classes/fsm/machine/nfa/NFAMachine.class
+<BR>classes/fsm/machine/nfa/Relation$Enumerator.class
+<BR>classes/fsm/machine/nfa/Relation.class
+<BR>classes/fsm/machine/Alphabet.class
+<BR>classes/fsm/machine/DefineRelationship.class
+<BR>classes/fsm/machine/EndOfInputException.class
+<BR>classes/fsm/machine/InputException.class
+<BR>classes/fsm/machine/InputPair.class
+<BR>classes/fsm/machine/InputTuple.class
+<BR>classes/fsm/machine/Machine$InputTape.class
+<BR>classes/fsm/machine/Machine.class
+<BR>classes/fsm/machine/MachineException.class
+<BR>classes/fsm/machine/OutputTuple.class
+<BR>classes/fsm/machine/SetOfStates.class
+<BR>classes/fsm/machine/State.class
+<BR>classes/fsm/machine/Tuple.class
+<BR>classes/fsm/xqt/RunMachine.class
+<BR>classes/fsm/xqt/XQTThread.class
+<BR>classes/DetailTextFSM.class
+<BR>classes/GraderFSM.class
+<BR>classes/QuickTextFSM.class
+<BR>fsm_source/dfa1.txt
+<BR>fsm_source/dfa2.txt
+<BR>fsm_source/dfa3.txt
+<BR>fsm_source/fsm1.gif
+<BR>fsm_source/fsm10.gif
+<BR>fsm_source/fsm11.gif
+<BR>fsm_source/fsm12.gif
+<BR>fsm_source/fsm13.gif
+<BR>fsm_source/fsm14.gif
+<BR>fsm_source/fsm15.gif
+<BR>fsm_source/fsm2.gif
+<BR>fsm_source/fsm3.gif
+<BR>fsm_source/fsm4.gif
+<BR>fsm_source/fsm5.gif
+<BR>fsm_source/fsm6.gif
+<BR>fsm_source/fsm7.gif
+<BR>fsm_source/fsm8.gif
+<BR>fsm_source/fsm9.gif
+<BR>fsm_source/fsmdoc.html
+<BR>fsm_source/inputd1.txt
+<BR>fsm_source/inputd2.txt
+<BR>fsm_source/inputd3.txt
+<BR>fsm_source/inputn1.txt
+<BR>fsm_source/nfa1.txt
+<BR>fsm_source/nfa2.txt
+<BR>fsm_source/nfa3.txt
+<BR>fsm_source/nfa4.txt
+<BR>fsm_source/nfa5.txt
+
+<P>(the path shown is for UNIX, you get the equivalent on a WINDOWS machine)
+
+<P>Note that Java is case sensitive, <I>even on directory names</I>.&nbsp;
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="env"></A><B>Setting the environment</B></H3></CENTER>
+Open or create AUTOEXEC.BAT.
+
+<P>Add the following two lines after any other modification to the path
+<PRE>set path = %path%;c:\jdk1.1.4\bin
+
+set CLASSPATH = c:\classes</PRE>
+Despite suggestions in the Java installation files, we find this CLASSPATH
+very convenient. On bingsuns you have to modify the file ".cshrc" to add
+the lines (check which is the latest jdk)
+<PRE>setenv PATH ${PATH}:/opt/local/java/jdk1.1.4/bin&nbsp;
+
+setenv CLASSPATH /u0/users/A/head/classes:&lt;your login path>/classes</PRE>
+
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="example"></A><B>Obtaining the example files</B></H3></CENTER>
+The files obtained will be (you can also save them from the following links)
+<A HREF="dfa1.txt">dfa1.txt</A>, <A HREF="dfa2.txt">dfa2.txt</A>, <A HREF="dfa3.txt">dfa3.txt</A>,
+<A HREF="nfa1.txt">nfa1.txt</A>, <A HREF="nfa2.txt">nfa2.txt</A>, <A HREF="nfa3.txt">nfa3.txt</A>,
+<A HREF="nfa4.txt">nfa4.txt</A>, <A HREF="nfa5.txt">nfa5.txt</A>. The languages
+that these machines accept are annotated in the heading of the machine
+text and as the title of the Java frame that runs the simulation. When
+you download these files make sure there are no empty lines at the top
+of the file. They are included in the zip and tar files and will be placed
+in a subdirectory C:\fsm_source.
+<BR>The test files <A HREF="inputd1.txt">inputd1.txt</A>, <A HREF="inputd2.txt">inputd2.txt</A>,
+<A HREF="inputd3.txt">inputd3.txt</A>, <A HREF="inputn1.txt">inputn1.txt</A>
+are used in conjunction with the text-only versions of the program, as
+described below.
+<BR>
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="graphical"></A><B>Using the graphical version of the Simulator</B></H3></CENTER>
+When you type in the command window (MS-DOS window on Windows 95/NT and
+an X-Term window on Solaris)
+<UL>
+<LI>
+<FONT FACE="Courier">java FSM</FONT></LI>
+</UL>
+you will see the frame shown in <A HREF="fsm1.gif">Figure 1</A>.
+
+<P>If you click on "Machine" in the Menu Bar, you pull down the options
+"New Machine" and "Restart," as shown in <A HREF="fsm2.gif">Figure 2</A>.
+
+<P>When you click on "New Machine," you get a File Dialog Box, which allows
+you to open a file that contains a description of the finite state machine
+that you are about to test, see <A HREF="fsm3.gif">Figure 3</A>.
+
+<P>You select and open the appropriate file. The format for the file is
+described later. The simulator will load and display the states of the
+machine and the transitions between the states, see <A HREF="fsm4.gif">Figure
+4</A>. If there are detectable errors in the format of your machine these
+will be reported in your command window. Resize the window to allow you
+to spread out the states in the black area on the screen. The states are
+distributed at random on the screen and you can drag them with the mouse
+to any location in the black area, <A HREF="fsm5.gif">Figure 5</A>.
+
+<P>Next you should insert an input string. If you do not, the input will
+be assumed to be the empty string. To insert an input string, click in
+the empty text field next to the label "Input." Type in the input string,
+<A HREF="fsm6.gif">Figure 6</A>, and click the button "Accept Input Tape"
+OR hit enter <A HREF="fsm7.gif">Figure 7</A>.
+
+<P>The control bar allows you to proceed one step at a time (by pressing
+"Step") or run continuously at different speeds (by pressing one of the
+smaller buttons, which will show up red). See <A HREF="fsm8.gif">Figure
+8</A>.
+<H3>
+<A NAME="notes"></A>NOTES</H3>
+
+<UL>
+<LI>
+The initial state is indicated by a green arrow</LI>
+
+<LI>
+The final states are have an extra green oval around the state</LI>
+
+<LI>
+The final states are also labeled in CAPITAL letters</LI>
+
+<LI>
+There is a special feature that allows the machine to run in reverse, thereby
+undoing all the transitions that have occurred. Reverse execution is not
+possible after the machine halts (either in an accepting or a non-accepting
+state)</LI>
+
+<LI>
+The number of transition steps executed so far is shown in a message next
+to the "Accept Input Tape" button</LI>
+
+<LI>
+This message is replaced with an "ACCEPTED" or "Not accepted" message when
+the machine halts. <A HREF="fsm8.gif">Figure 8</A> shows the machine running,
+<A HREF="fsm9.gif">Figure 9</A> shows the machine when it accepts the input
+and <A HREF="fsm10.gif">Figure 10</A> shows the machine when it fails to
+accept an input</LI>
+
+<LI>
+The command window will also show a final status message when the machine
+completes</LI>
+</UL>
+The FSM simulator also allows you to introduce a "New Input," which is
+selected under "Options" on the menu bar, and to "Restart" the machine
+with the same input, which is selected under "Machine" on the menu bar.
+See <A HREF="fsm11.gif">Figure 11</A> and <A HREF="fsm12.gif">Figure 12</A>
+<H3>
+<A NAME="specialnote"></A>SPECIAL NOTE ON NFA SIMULATIONS</H3>
+In this version, the NFA simulation is really a demonstration of the DFA
+derived from the NFA. The states of this DFA are subsets of states of the
+NFA. The initial state appears as the epsilon-closure (lambda-closure)
+of the initial state, <A HREF="fsm13.gif">Figure 13</A>. Each transition
+moves to a new set of states, taking the epsilon-closure (lambda-closure)
+each time, <A HREF="fsm14.gif">Figure 14</A>. The input is accepted if
+the set contains a final state, <A HREF="fsm15.gif">Figure 15</A>.
+<BR>
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="grader"></A>The course-grader's quick-to-use version of the Simulator</H3></CENTER>
+When a course grader is presented with a large number of FSM text files
+to check, one time saving approach is to run all the FSM's against a set
+of test inputs. The grader should prepare a file with a number of test
+cases, for example the file <A HREF="inputd1.txt">inputd1.txt</A> shown
+below. The first line (300) is an upper limit on the number of steps that
+the simulation can run for [this is for uniformity with the Turing machine
+simulator, where machines might run for ever]. The second line (16) is
+the total number of test cases in the file. Lines 3 through 18 are the
+test cases. Line 3 is a blank line representing the empty string.
+<PRE>300&nbsp;
+16&nbsp;
+
+11110101111110&nbsp;
+11110101111110111110&nbsp;
+101010&nbsp;
+1010100&nbsp;
+10101010&nbsp;
+000&nbsp;
+0000&nbsp;
+1010101010&nbsp;
+101010100&nbsp;
+11111111&nbsp;
+0&nbsp;
+00&nbsp;
+00000&nbsp;
+0110111&nbsp;
+01</PRE>
+To run the grader's version, type the following:
+<PRE><TT>java GraderFSM</TT></PRE>
+or
+<PRE><TT>java GraderFSM inputd1.txt</TT></PRE>
+or
+<PRE><TT>java GraderFSM inputd1.txt dfa1.txt</TT></PRE>
+If the command-line parameters are not provided, there will be prompts
+to ask for them.
+<BR>In the example below, the grader is working in the directory "fsm_source"
+and types in the name of the common set of test cases in the file <A HREF="inputd1.txt">inputd1.txt</A>.
+Then there is a prompt for the next FSM to test. In this example, the machine
+file <A HREF="dfa1.txt">dfa1.txt</A> was used. The following lines give
+the test results: "YES" means the current input was accepted, "NO" means
+that the end of the current input was reached but the input was not accepted
+and "Machine exception, ..." indicates that the simulation was suspended
+before the end of the current input string because the necessary transition
+was not defined in the automaton (this third possibility is quite normal).
+After checking whether the tests match the correct responses, the program
+asks for another FSM file to test (against the same test inputs) so that
+the grader can run through all the solutions to a specific problem.
+<PRE>C:\fsm_source>java GraderFSM
+Enter Input File Name: inputd1.txt
+
+TITLE: NEW MACHINE
+Enter Machine FileName: dfa1.txt
+
+TITLE: DFA: Example 1--Eileen Head--Language: \ + 1* 0 1* 0 1* 0 + ...&nbsp;
+YES
+YES
+YES
+YES
+YES
+YES
+YES
+YES
+&nbsp;&nbsp;&nbsp; MachineException: Input :Q4,1 has no next state
+&nbsp;&nbsp;&nbsp; MachineException: Input :Q4,0 has no next state
+YES
+NO
+NO
+&nbsp;&nbsp;&nbsp; MachineException: Input :Q4,0 has no next state
+NO
+NO
+
+Another Machine? Y/N</PRE>
+
+<H3>
+
+<HR WIDTH="100%"></H3>
+
+<CENTER>
+<H3>
+<A NAME="shortform"></A>The short-form of the text-only version of the
+Simulator</H3></CENTER>
+A second text-only versions is designed to let a student work at an ASCII
+terminal, typically through a dial-up connection, which normally prevents
+the use of the GUI version. To run the simpler version, simply type one
+of the following:
+<PRE>java QuickTextFSM</PRE>
+or
+<PRE>java QuickTextFSM inputd1.txt</PRE>
+or
+<PRE>java QuickTextFSM inputd1.txt dfa1.txt</PRE>
+or
+<PRE>java QuickTextFSM inputd1.txt dfa1.txt logd1.txt</PRE>
+If the parameter "logd1.txt" is not provided, the default is "report.txt."
+If the other parameters are not provided, there will be prompts to request
+them. The file of test cases <A HREF="inputd1.txt">inputd1.txt</A> is the
+same as before. The following example shows the use of the same FSM <A HREF="dfa1.txt">dfa1.txt</A>,
+which was used above.
+<PRE>C:\fsm_source>java QuickTextFSM inputd1.txt</PRE>
+
+<PRE>TITLE: NEW MACHINE
+Enter Machine FileName: dfa1.txt</PRE>
+
+<PRE>TITLE: DFA: Example 1--Eileen Head--Language: \ + ...
+Ready? return</PRE>
+The program reports on whether the FSM accepted a particular input from
+the file <A HREF="inputd1.txt">inputd1.txt</A>, in this case. The reports
+come in groups of 5. Examples include the following (the first example
+is a test with a blank input):
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp; INPUT:
+&nbsp; STATUS: DFA: Example 1--Eileen Head--Language: \ + 1* 0 1* 0 1* 0 +&nbsp;
+1* 0 1* 0 1* 0 1* 0 ACCEPTED after Step: 1
+&nbsp;&nbsp;&nbsp;&nbsp; INPUT: 11110101111110
+&nbsp; STATUS: DFA: Example 1--Eileen Head--Language: \ + 1* 0 1* 0 1* 0 +&nbsp;
+1* 0 1* 0 1* 0 1* 0 ACCEPTED after Step: 15
+&nbsp;&nbsp;&nbsp;&nbsp; INPUT: 00
+&nbsp; STATUS: DFA: Example 1--Eileen Head--Language: \ + 1* 0 1* 0 1* 0 +&nbsp;
+1* 0 1* 0 1* 0 1* 0 NOT Accepted after Step:3
+&nbsp;&nbsp;&nbsp;&nbsp; INPUT: 00000
+&nbsp;MachineException: Input :Q4,0 has no next state
+&nbsp;&nbsp;&nbsp;&nbsp; INPUT: 0110111
+&nbsp; STATUS: DFA: Example 1--Eileen Head--Language: \ + 1* 0 1* 0 1* 0 +&nbsp;
+1* 0 1* 0 1* 0 1* 0 NOT Accepted after Step:8</PRE>
+The same information shown on the screen is saved in the log file (default
+name: report.txt).
+
+<P>
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="textonly"></A><B>The full text-only version of the finite state
+machine simulator</B></H3></CENTER>
+For the text-only version, the FSM files are prepared in the same way as
+for the graphical version of the simulator. In this case, as before you
+need to prepare a file of inputs such as <A HREF="inputd1.txt">inputd1.txt</A>.
+The file was described in the section on the <A HREF="#grader">Grader's
+version</A> of the program. The results of the tests will be written to
+an output log, which has a default name is "report.txt" but can be modified
+by the user. This text-only can be run using one of the following choices:
+<PRE>java DetailTextFSM</PRE>
+or
+<PRE>java DetailTextFSM inputd1.txt</PRE>
+or
+<PRE>java DetailTextFSM inputd1.txt dfa1.txt</PRE>
+or
+<PRE>java DetailTextFSM inputd1.txt dfa1.txt logd1.txt</PRE>
+If the parameter "logd1.txt" is not provided, the default is "report.txt."
+If the other parameters are not provided, there will be prompts to request
+them. On the screen the results of each test are shown in exactly the same
+way as for the QuickTextFSM program described <A HREF="#shortform">above</A>
+(accept/reject/failure on account of a missing transition) with the name
+of the machine, the test input, the state where execution ended. The big
+difference is in the log file. Note that in this version, after each run
+of the simulator, you may also change the FSM, keeping the same input file
+(this feature is provided specifically for the grader who might be diagnosing
+the failure of students' work).
+
+<P>The format of the log file is shown in the following examples taken
+from <A HREF="dfa1.txt">dfa1.txt</A> and <A HREF="inputd1.txt">inputd1.txt</A>
+<PRE>TITLE: DFA: Example 1--Eileen Head--Language: \ + ...&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INPUT:&nbsp;
+&nbsp; SNAPSHOT:&nbsp;&nbsp; START State:Q0
+&nbsp; SNAPSHOT:&nbsp;&nbsp; Input Tapes:
+&nbsp; SNAPSHOT:&nbsp;
+&nbsp; SNAPSHOT:&nbsp;&nbsp;
+&nbsp; SNAPSHOT: Stopped ACCEPTED after Step: 1</PRE>
+
+<PRE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INPUT: 11110101111110
+&nbsp; SNAPSHOT:&nbsp;&nbsp; START State:Q0
+&nbsp; SNAPSHOT:&nbsp;&nbsp; Input Tapes:
+&nbsp; SNAPSHOT: 11110101111110
+&nbsp; SNAPSHOT:</PRE>
+
+<PRE>&nbsp; SNAPSHOT: Step number: 1,&nbsp; Current State: Q0
+&nbsp; SNAPSHOT: 1110101111110</PRE>
+
+<PRE>&nbsp; SNAPSHOT: Step number: 2,&nbsp; Current State: Q0
+&nbsp; SNAPSHOT: 110101111110</PRE>
+
+<PRE>&nbsp; ...</PRE>
+
+<PRE>&nbsp; SNAPSHOT: Step number: 13,&nbsp; Current State: q2
+&nbsp; SNAPSHOT: 0</PRE>
+
+<PRE>&nbsp; SNAPSHOT: Step number: 14,&nbsp; Current State: Q3
+&nbsp; SNAPSHOT:&nbsp;
+&nbsp; SNAPSHOT: Stopped ACCEPTED after Step: 15</PRE>
+
+<PRE>&nbsp; ...</PRE>
+You can see the current state and remaining input at each step of the simulation.
+The file is a sequence of snapshots of the simulation, one for each cycle
+of the simulator program.
+
+<P>If the user does not get the expected result when viewing the on-screen
+report, the log file can be used to isolate which state/input combination
+caused the problem.
+<BR>
+<HR WIDTH="100%">
+<CENTER>
+<H3>
+<A NAME="format"></A><B>Format of the FSM file</B></H3></CENTER>
+The format for the DFA/NFA files is the following. There should be <I>no
+blank lines</I>:
+
+<P>Line 1: type of machine (DFA, NFA)
+<BR>Line 2: name of the machine. For assignments use name(s) and question
+number
+<BR>Line 3: all characters in the alphabet, separated by spaces
+<BR>Line 4: the initial state of the DFA machine
+<BR>Line 5: all the final state(s) separated by spaces. The list could
+be empty
+<BR>Line 6: first of a list of transition (see below)
+<BR>Line 7: another transition
+<BR>…
+<BR>Line ?: last of the list of transitions
+<BR>Last line: end. You must type the word "end" but it can be upper or
+lower case
+
+<P>The format of a transition is:
+
+<P>&lt;state> &lt;input symbol> &lt;next-state>
+
+<P>where
+<UL>
+<LI>
+the &lt;state> and &lt;next-state> are the names of states (strings <I>with
+NO blanks</I>).</LI>
+
+<LI>
+the &lt;input symbol> is a symbol from the "alphabet" or in the case of
+an NFA with an epsilon (lambda) transition, the symbol \ (a "backslash")</LI>
+</UL>
+<A NAME="ex1"></A><B>Example 1:</B> NOTE THAT THE COMMENTS ON EACH LINE
+MUST HAVE A SPACE BEFORE THE SYMBOL "//"
+
+<P><TT>DFA</TT> //Type, note such comments are permitted at the end of
+the line
+<BR><TT>Example 1</TT>--Hopcroft/Ullman--Language: {w in (0+1)* : #0's
+is even &amp; #1's is even}&nbsp; //Title
+<BR><TT>0 1</TT> // input alphabet, single symbols separated by spaces
+<BR><TT>q0 q1 q2 q3</TT> // Machine states (strings): note: alphabet and
+states are CASE-SENSITIVE
+<BR><TT>q0</TT> // the initial state, required--cannot be empty
+<BR><TT>q0</TT> // final state(s)--can be empty, in which case language
+is empty
+<BR><TT>q0&nbsp; 0&nbsp; q2</TT>&nbsp; // transitions: input state, input
+symbol, output state
+<BR><TT>q0&nbsp; 1&nbsp; q1</TT>&nbsp; // do not forget there must be a
+space before the "slashes"
+<BR><TT>q1&nbsp; 0&nbsp; q3</TT>
+<BR><TT>q1&nbsp; 1&nbsp; q0</TT>
+<BR><TT>q2&nbsp; 0&nbsp; q0</TT>
+<BR><TT>q2&nbsp; 1&nbsp; q3</TT>
+<BR><TT>q3&nbsp; 0&nbsp; q1</TT>
+<BR><TT>q3&nbsp; 1&nbsp; q2</TT>
+<BR><TT>end</TT>&nbsp; //required, this line is not case-sensitive
+
+<P><A NAME="ex2"></A><B>Example 2</B> In the NFA, "\" signifies an empty
+transition
+
+<P><TT>NFA</TT> //Type
+<BR><TT>Example</TT>--Les Lander //Title
+<BR><TT>a b</TT> // input alphabet, note such comments are permitted at
+the end of the line
+<BR><TT>q0 q1 q2 q3 q4 q5 q6</TT> // Machine states
+<BR><TT>q0</TT> // the initial state
+<BR><TT>q2 q4</TT> // final state
+<BR><TT>q0&nbsp; b&nbsp; q4</TT>&nbsp; // transitions: input state, input
+symbol, output state
+<BR><TT>q0&nbsp; \&nbsp; q1</TT>&nbsp;&nbsp; // epsilon (lambda) transition,
+"\" denotes lambda
+<BR><TT>q1&nbsp; a&nbsp; q5</TT>
+<BR><TT>q1&nbsp; b&nbsp; q2</TT>
+<BR><TT>q2&nbsp; a&nbsp; q3</TT>
+<BR><TT>q2&nbsp; \&nbsp; q5</TT>
+<BR><TT>q3&nbsp; b&nbsp; q2</TT>
+<BR><TT>q3&nbsp; b&nbsp; q4</TT>
+<BR><TT>q3&nbsp; \&nbsp; q2</TT>
+<BR><TT>q4&nbsp; b&nbsp; q6</TT>
+<BR><TT>q4&nbsp; \&nbsp; q2</TT>
+<BR><TT>q5&nbsp; \&nbsp; q0</TT>
+<BR><TT>q6&nbsp; a&nbsp; q6</TT>
+<BR><TT>q6&nbsp; \&nbsp; q0</TT>
+<BR><TT>end</TT>&nbsp; //required
+<BR>&nbsp;
+<BR>&nbsp;
+</BODY>
+</HTML>

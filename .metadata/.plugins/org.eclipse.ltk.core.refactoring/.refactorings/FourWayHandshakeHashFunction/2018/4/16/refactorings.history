@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;FourWayHandshakeHashFunction&apos;&#x0D;&#x0A;- Original project: &apos;FourWayHandshakeHashFunction&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     main.BasicIdent2Test.java&#x0D;&#x0A;     main.TimeCountProxyHandle.java&#x0D;&#x0A;     main.WindowsInfoUtil.java" description="Delete elements" element1="/src&lt;main{BasicIdent2Test.java" element2="/src&lt;main{TimeCountProxyHandle.java" element3="/src&lt;main{WindowsInfoUtil.java" elements="3" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1524014593218" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: beispiel
+Bundle-SymbolicName: beispiel
+Bundle-Version: 0.0.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: AOT
+Require-Bundle: nessi.ip.handler;bundle-version="2.1.2"
+Export-Package: de.tub.dai.pjisa.apps

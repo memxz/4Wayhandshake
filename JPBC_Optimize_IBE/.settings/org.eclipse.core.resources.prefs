@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/encrypt/Test.java=UTF-8
+encoding//src/encrypt/TimeCountProxyHandle.java=UTF-8
+encoding//src/encrypt/core/BaseIdentSystem.java=UTF-8
+encoding//src/encrypt/core/FileUtils.java=UTF-8
+encoding//src/encrypt/core/SystemParameter.java=UTF-8
+encoding//src/encrypt/core/Utils.java=UTF-8
+encoding//src/encrypt/model/CipherText.java=UTF-8
+encoding//src/encrypt/model/CommonText.java=UTF-8
+encoding//src/encrypt/model/UserKey.java=UTF-8
+encoding/<project>=GBK
